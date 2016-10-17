@@ -4,7 +4,8 @@
   "description": "Simple mtg application",
   "main": "index.js",
   "scripts": {
-    "test": "npm test"
+    "test": "npm test",
+    "start": "node ./src/index.js"
   },
   "repository": {
     "type": "git",
@@ -23,5 +24,8 @@
   "bugs": {
     "url": "https://github.com/fabiomaciel/simple-mtg/issues"
   },
-  "homepage": "https://github.com/fabiomaciel/simple-mtg#readme"
+  "homepage": "https://github.com/fabiomaciel/simple-mtg#readme",
+  "dependencies": {
+    "express": "^4.14.0"
+  }
 }
