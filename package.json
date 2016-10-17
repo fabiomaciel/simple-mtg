@@ -1,0 +1,27 @@
+{
+  "name": "simple-mtg",
+  "version": "0.0.1",
+  "description": "Simple mtg application",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/fabiomaciel/simple-mtg.git"
+  },
+  "keywords": [
+    "mtg",
+    "magic",
+    "the",
+    "gathering",
+    "magic",
+    "app"
+  ],
+  "author": "Fabio Maciel, Magno Golveia",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fabiomaciel/simple-mtg/issues"
+  },
+  "homepage": "https://github.com/fabiomaciel/simple-mtg#readme"
+}
