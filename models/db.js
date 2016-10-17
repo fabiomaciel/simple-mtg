@@ -1,7 +1,9 @@
 'use strict'
 
-const db = require('mongoose')
-db.connect('mongodb://localhost/test')
+const db = require('mongoose'),
+      config = require('../config/config')
+      
+db.connect(`mongodb://${config.mongo.host}/${config.mongo.database}`)
 
 module.export = db.connection
 
