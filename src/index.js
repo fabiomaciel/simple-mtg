@@ -14,7 +14,7 @@ app.use('/',home);
 
 app.use('/cards', cards);
 
-app.use('/mathces'. matches);
+app.use('/matches', matches);
 
 app.listen(config.port);
 console.log(`Server initialized on port: ${config.port}`);
