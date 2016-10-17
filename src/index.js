@@ -1,10 +1,12 @@
 'use strict';
 var express = require('express'),
-    app     = express();
+    app     = express(),
+    config  = require('../config/config');
 
 app.get('/health',function(req,res){
     res.send('It\'s ALIIIIIIVE');
 });
 
-app.listen(8000);
-console.log('Server initialized on port: '+8000);
+app.listen(config.port);
+console.log(`Server initialized on port: ${config.port}`);
+
