@@ -7,13 +7,31 @@ const mongoose = require('mongoose'),
 const CardSchema = mongoose.Schema({
   id: String,
 	name: String,
-	colection: String,
-	number: Number,
+	collectionCode: String,
   rarity: String,
-	image: String
+	number: Number,
+	mciNumber: Number,
+	power: String,
+	toughness: String,
+	cmc: Number,
+	manaCost: String,
+	colorIdentity: Array,
+	colors: Array,
+	flavor: String,
+	imageName: String,
+	layout: String,
+	multiverseid: Number,
+	type: String,
+	types: Array,
+	subtypes: Array,
+	supertypes: Array,
+	text: String,
+	artist: String,
 })
 
-
+CardSchema.methods.imageUrl = function(lang) {
+	return `http://magiccards.info/scans/${lang || 'en'}/${this.collectionCode}/${this.number}.jpg`
+}
 
 const Card = mongoose.model('card', CardSchema)
 
