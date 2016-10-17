@@ -6,7 +6,7 @@ router.get('/',function(req,res) {
 });
 
 router.get('/:id', function(req,res) {
-    res.send(`JSON com carta do id: ${req.params.id} `
+    res.send(`JSON com carta do id: ${req.params.id} `);
 });
 
 
