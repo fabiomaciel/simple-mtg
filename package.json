@@ -26,6 +26,7 @@
   },
   "homepage": "https://github.com/fabiomaciel/simple-mtg#readme",
   "dependencies": {
-    "express": "^4.14.0"
+    "express": "^4.14.0",
+    "mongoose": "^4.6.4"
   }
 }
