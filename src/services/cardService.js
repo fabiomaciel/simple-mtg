@@ -15,6 +15,11 @@ class CardService{
     findById(id){
         return Card.findOne({id: id})
     }
+
+    findByCollection(code){
+        return Card.find({collectionCode: code})
+    }
+
 }
 
 module.exports = new CardService
