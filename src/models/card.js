@@ -8,7 +8,7 @@ const CardSchema = mongoose.Schema({
   id: String,
 	name: {type: String, unique: true, dropDups: true, required: true},
 	names: {type: Array, required: false},
-	collectionCode: String,
+	collectionCode: [String],
     rarity: String,
 	number: {type: Number, require: false},
 	mciNumber: Number,
