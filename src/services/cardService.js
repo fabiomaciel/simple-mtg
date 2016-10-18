@@ -9,9 +9,12 @@ class CardService{
     }
 
     findByName(name){
-        return Card.find({name: name})
+        return Card.findOne({name: name})
     }
 
+    findById(id){
+        return Card.findOne({id: id})
+    }
 }
 
 module.exports = new CardService
