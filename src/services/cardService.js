@@ -20,6 +20,29 @@ class CardService{
         return Card.find({collectionCode: code})
     }
 
+    loadCollection(collection){
+        return collection.cards.map( card =>{
+            card.number = card.number || card.mciNumber
+            card.collectionCode = [collection.code] 
+            return card
+        })
+    }
+
+    importCards(cards){
+        cards.forEach(card => this.createCard(card))
+    }
+
+    importCollectionList(collectionList){
+        return collectionList.forEach(collection => {
+            this.importCollection(collection)
+        })
+    }
+
+    importCollection(collection){
+        let cards = this.loadCollection(collection)
+        this.importCards(cards)
+    }
+
 }
 
 module.exports = new CardService
