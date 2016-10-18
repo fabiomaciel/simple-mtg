@@ -1,11 +1,12 @@
-var express = require('express'),
-    router = express.Router();
+'use strict';
+const express = require('express'),
+      router = express.Router();
 
-router.get('/',function(req,res) {
+router.get('/',(req,res) => {
     res.send('JSON com todas cartas');
 });
 
-router.get('/:id', function(req,res) {
+router.get('/:id', (req,res) => {
     res.send(`JSON com carta do id: ${req.params.id} `);
 });
 
