@@ -3,6 +3,7 @@ var express = require('express'),
     app     = express(),
     home    = require('./routes/home'),
     cards   = require('./routes/cards'),
+    decks   = require('./routes/decks'),
     matches = require('./routes/matches'),
     config  = require('../config/config');
 
@@ -14,7 +15,9 @@ app.use('/',home);
 
 app.use('/cards', cards);
 
-app.use('/mathces'. matches);
+app.use('/decks', decks);
+
+app.use('/matches', matches);
 
 app.listen(config.port);
 console.log(`Server initialized on port: ${config.port}`);
