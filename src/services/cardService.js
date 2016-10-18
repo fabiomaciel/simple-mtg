@@ -8,6 +8,9 @@ class CardService{
         return card.save()
     }
 
+    findByName(name){
+        return Card.find({name: name})
+    }
 
 }
 
