@@ -5,7 +5,9 @@ const express = require('express'),
 
 
 router.get('/:id', (req,res) => {
-    res.send(`JSON com carta do id: ${req.params.id} `);
+    cards.findById(req.params.id).lean().exec((err,card)=>{
+            res.send(JSON.stringify(card));
+        });
 });
 
 router.get('/', (req,res) => {
