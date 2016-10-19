@@ -47,7 +47,10 @@ class CardService{
     importCards(cards){
         let index = 0
         let each = card => {
-            if(!card) return
+            if(!card) {
+                console.log(`End import data from collection ${card.collectionCode}`)
+                return
+            }
             this.addCollection(card.name, card.collectionCode[0])
                 .then(result => {
                     if(result == false) return this.createCard(card)
@@ -64,8 +67,9 @@ class CardService{
     }
 
     importCollection(collection){
+        console.log(`Start import collection ${collection.code}`)
         let cards = this.loadCollection(collection)
-        this.importCards(cards)
+        return this.importCards(cards)
     }
 
 }
