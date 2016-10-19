@@ -9,7 +9,7 @@ class CardService{
     }
 
     addCollection(name, collectionCode){
-        return this.findOneByName(name).then(card => {
+        return this.findOneByName(name.toLowerCase()).then(card => {
             if(!card) {
                 return false
             }
