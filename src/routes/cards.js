@@ -11,10 +11,16 @@ router.get('/:id', (req,res) => {
 });
 
 router.get('/', (req,res) => {
-    if(req.query.name.length > 0){
+    if(req.query.name && req.query.name.length > 0){
         cards.findManyByName(new RegExp(req.query.name)).lean().exec((err,card)=>{
             res.send(JSON.stringify(card));
         });
+    }else if(req.query.collection && req.query.collection.length > 0){
+        cards.findByCollection(new RegExp(req.query.collection)).lean().exec((err,card)=>{
+            res.send(JSON.stringify(card));
+        });
+    }else{
+        res.sendStatus(404);
     }
 })
 
