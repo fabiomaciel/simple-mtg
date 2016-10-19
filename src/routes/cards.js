@@ -12,7 +12,7 @@ router.get('/:id', (req,res) => {
 
 router.get('/', (req,res) => {
     if(req.query.name.length > 0){
-        cards.findByName(new RegExp(req.query.name)).lean().exec((err,card)=>{
+        cards.findManyByName(new RegExp(req.query.name)).lean().exec((err,card)=>{
             res.send(JSON.stringify(card));
         });
     }
