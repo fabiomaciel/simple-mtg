@@ -8,6 +8,18 @@ class CardService{
         return card.save()
     }
 
+    addCollection(name, collectionCode){
+        return this.findByName(name).then(card => {
+            if(!card) return false
+            if(card.collectionCode.indexOf(collectionCode) != -1) {
+                console.warn(`Card '${name}'' already have collectionCode '${collectionCode}''`)
+                return true
+            }
+            card.collectionCode.push(collectionCode)
+            return card.save()
+        })
+    }
+
     findByName(name){
         return Card.findOne({name: name})
     }
@@ -29,7 +41,16 @@ class CardService{
     }
 
     importCards(cards){
-        cards.forEach(card => this.createCard(card))
+        let index = 0
+        let each = card => {
+            if(!card) return
+            this.addCollection(card.name, card.collectionCode[0])
+                .then(result => {
+                    if(result == false) return this.createCard(card)
+                }).then( _ => each(cards[++index]))
+        }   
+
+        each(cards[index])
     }
 
     importCollectionList(collectionList){
