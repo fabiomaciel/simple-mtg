@@ -6,7 +6,8 @@
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha",
     "start": "node ./src/index.js",
-    "load": "node ./src/loadSets.js"
+    "load": "node ./src/loadSets.js",
+    "import": "node ./src/importSets.js"
   },
   "repository": {
     "type": "git",
