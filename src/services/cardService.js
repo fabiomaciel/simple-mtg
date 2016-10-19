@@ -20,8 +20,12 @@ class CardService{
         })
     }
 
-    findByName(name){
-        return Card.findOne({name: name})
+    findOneByName(name){
+        return Card.findOne({imageName: name})
+    }
+
+    findManyByName(name){
+        return Card.find({imageName: name})
     }
 
     findById(id){
