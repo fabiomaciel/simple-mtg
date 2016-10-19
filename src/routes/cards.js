@@ -5,12 +5,14 @@ const express = require('express'),
 
 
 router.get('/:id', (req,res) => {
-    res.send(`JSON com carta do id: ${req.params.id} `);
+    cards.findById(req.params.id).lean().exec((err,card)=>{
+            res.send(JSON.stringify(card));
+        });
 });
 
 router.get('/', (req,res) => {
     if(req.query.name.length > 0){
-        cards.findByName(new RegExp(req.query.name)).lean().exec((err,card)=>{
+        cards.findManyByName(new RegExp(req.query.name)).lean().exec((err,card)=>{
             res.send(JSON.stringify(card));
         });
     }
