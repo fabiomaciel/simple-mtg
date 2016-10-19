@@ -1,11 +1,11 @@
 'use strict';
-var express = require('express'),
-    app     = express(),
-    home    = require('./routes/home'),
-    cards   = require('./routes/cards'),
-    decks   = require('./routes/decks'),
-    matches = require('./routes/matches'),
-    config  = require('../config/config');
+const express = require('express'),
+      app     = express(),
+      home    = require('./routes/home'),
+      cards   = require('./routes/cards'),
+      decks   = require('./routes/decks'),
+      matches = require('./routes/matches'),
+      config  = require('../config/config');
 
 app.get('/health',function(req,res){
     res.send('It\'s ALIIIIIIVE');

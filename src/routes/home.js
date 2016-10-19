@@ -1,7 +1,8 @@
-var express = require('express'),
-    router = express.Router();
+'use strict';
+const express = require('express'),
+      router = express.Router();
 
-router.get('/',function(req,res) {
+router.get('/',(req,res) => {
     res.send('Olá eu sou o goku');
 });
 
