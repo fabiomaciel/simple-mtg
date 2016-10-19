@@ -1,3 +1,4 @@
 node_modules
 *.swp
 .vscode
+./src/assets/sets/*.json

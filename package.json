@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha",
-    "start": "node ./src/index.js"
+    "start": "node ./src/index.js",
+    "load": "node ./src/loadSets.js"
   },
   "repository": {
     "type": "git",
