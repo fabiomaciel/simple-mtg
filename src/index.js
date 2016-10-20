@@ -6,6 +6,7 @@ const express = require('express'),
       decks   = require('./routes/decks'),
       matches = require('./routes/matches'),
       users   = require('./routes/users'),
+      logger  = require('./util/logger.js'),
       config  = require('../config/config');
 
 app.get('/health',function(req,res){
@@ -23,5 +24,5 @@ app.use('/decks', decks);
 app.use('/matches', matches);
 
 app.listen(config.port);
-console.log(`Server initialized on port: ${config.port}`);
+logger.info(`Server initialized on port: ${config.port}`);
 

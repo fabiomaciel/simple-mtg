@@ -1,8 +1,9 @@
 'use strict'
 
-const fs = require('fs'), 
-    bluebird = require('bluebird'), 
-    request = bluebird.promisify(require('request'))
+const fs       = require('fs'), 
+      bluebird = require('bluebird'), 
+      request  = bluebird.promisify(require('request')),
+      logger   = require('./util/logger.js')
 
 const service = require('./services/cardService'),
     SETS_DIR = `${__dirname}/assets/sets`,
@@ -22,10 +23,10 @@ function getCollection(index){
         .then(data => {
             fs.writeFile(`${SETS_DIR}/${setCode}.json`, data.body,
                 err => {
-                    if(err) console.error(`Error while save file ${setCode}.json}`)
-                    else console.log(`Successfuly saved file ${setCode}.json`)
+                    if(err) logger.error(`Error while save file ${setCode}.json}`)
+                    else logger.info(`Successfuly saved file ${setCode}.json`)
                     if(isEnd()) {
-                        console.log('End download files')
+                        logger.info('End download files')
                     }
                     getCollection(index+1)
                 })

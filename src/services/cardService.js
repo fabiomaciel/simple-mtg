@@ -1,5 +1,6 @@
 'use strict'
-const Card = require('../models/card')
+const Card   = require('../models/card'),
+      logger = require('../util/logger');
 
 class CardService{
 
@@ -14,7 +15,7 @@ class CardService{
                 return false
             }
             if(card.collectionCode.indexOf(collectionCode) != -1) {
-                console.warn(`Card '${name}'' already have collectionCode '${collectionCode}''`)
+                logger.warn(`Card '${name}'' already have collectionCode '${collectionCode}''`)
                 return true
             }
             card.collectionCode.push(collectionCode)
@@ -50,7 +51,7 @@ class CardService{
         let index = 0
         let each = card => {
             if(!card) {
-                console.log(`End import data from collection ${collectionCode}`)
+                logger.info(`End import data from collection ${collectionCode}`)
                 return Promise.resolve(true)
             }
             return this.addCollection(card.name, card.collectionCode[0])
@@ -69,7 +70,7 @@ class CardService{
     }
 
     importCollection(collection){
-        console.log(`Start import collection ${collection.code}`)
+        logger.info(`Start import collection ${collection.code}`)
         let cards = this.loadCollection(collection)
         return this.importCards(cards, collection.code)
     }
