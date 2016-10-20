@@ -5,8 +5,7 @@ const fs       = require('fs'),
       request  = bluebird.promisify(require('request')),
       logger   = require('./util/logger.js')
 
-const service = require('./services/cardService'),
-    SETS_DIR = `${__dirname}/assets/sets`,
+const SETS_DIR = `${__dirname}/assets/sets`,
     SETS = require('./assets/SetCodes.json')
 
 function isEnd(){
