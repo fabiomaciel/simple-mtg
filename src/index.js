@@ -5,6 +5,7 @@ const express = require('express'),
       cards   = require('./routes/cards'),
       decks   = require('./routes/decks'),
       matches = require('./routes/matches'),
+      users   = require('./routes/users'),
       config  = require('../config/config');
 
 app.get('/health',function(req,res){
@@ -14,6 +15,8 @@ app.get('/health',function(req,res){
 app.use('/',home);
 
 app.use('/cards', cards);
+
+app.use('/users', users);
 
 app.use('/decks', decks);
 

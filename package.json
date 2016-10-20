@@ -3,8 +3,8 @@
   "version": "0.0.1",
   "description": "Simple mtg application",
   "apidoc": {
-      "title": "Simple MTG API Documentation",
-      "url": "http://localhost:8000"
+    "title": "Simple MTG API Documentation",
+    "url": "http://localhost:8000"
   },
   "main": "index.js",
   "scripts": {
@@ -33,6 +33,7 @@
   "homepage": "https://github.com/fabiomaciel/simple-mtg#readme",
   "dependencies": {
     "bluebird": "^3.4.6",
+    "body-parser": "^1.15.2",
     "express": "^4.14.0",
     "mongoose": "^4.6.4",
     "request": "^2.75.0"
