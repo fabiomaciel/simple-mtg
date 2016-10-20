@@ -1,4 +1,4 @@
-#Simple 
+#Simple MTG
 
 >    Magic The Gathering Battle Application
 
