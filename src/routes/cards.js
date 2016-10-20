@@ -77,7 +77,11 @@ const express = require('express'),
 
 router.get('/:id', (req,res) => {
     cards.findById(req.params.id).lean().exec((err,card)=>{
-            res.send(JSON.stringify(card));
+            if(card){
+                res.send(JSON.stringify(card));
+            }else{
+                res.sendStatus(404);
+            }
         });
 });
 
@@ -95,6 +99,7 @@ router.get('/:id', (req,res) => {
  * @apiGroup Card
  * @apiSuccess {Array} Number Array of cards
  */
+
 router.get('/', (req,res) => {
     if(req.query.name && req.query.name.length > 0){
         cards.findManyByName(new RegExp(req.query.name)).lean().exec((err,card)=>{
