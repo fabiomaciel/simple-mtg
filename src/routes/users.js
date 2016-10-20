@@ -17,7 +17,11 @@ router.use(bodyParser.json());
 
 router.get('/:id', (req,res) => {
     users.findById(req.params.id).lean().exec((err,user)=>{
-            res.send(JSON.stringify(user));
+            if(user == undefined){
+                res.sendStatus(404);
+            }else{
+                res.send(JSON.stringify(user));
+            }
         });
 });
 
@@ -30,14 +34,17 @@ router.get('/:id', (req,res) => {
  */
 
 router.get('/', (req,res) => {
-    if(req.query.username && req.query.username.length > 0){
+    if(Object.keys(req.query).length === 0){
+         users.findAllUsers().lean().exec((err,user)=>{
+           res.send(JSON.stringify(user));
+        });
+    }
+    else if(req.query.username && req.query.username.length > 0){
         users.findManyUserByName(new RegExp(req.query.username)).lean().exec((err,user)=>{
             res.send(JSON.stringify(user));
         });
     }else{
-        users.findAllUsers().lean().exec((err,user)=>{
-           res.send(JSON.stringify(user));
-        });
+        res.sendStatus(404);
     }
 });
 
