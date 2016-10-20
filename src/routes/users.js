@@ -56,12 +56,15 @@ router.get('/', (req,res) => {
  */
 
 router.post('/',(req,res) => {
-    users.createUser(req.body);
-    res.send('Usuario cadastrado');
+    users.createUser(req.body).then((userSaved)=>{
+         res.send(userSaved._id);
+    }).catch((err)=>{
+        res.status(400).send(err);
+    });
 });
 
 /**
- * @api {post} /user Create new user 
+ * @api {patch} /user Create new user 
  * @apiName CreateNewUser
  * @apiGroup User
  *
@@ -75,7 +78,7 @@ router.post('/',(req,res) => {
  *
  */
 
-router.put('/:id',(req,res) => {
+router.patch('/:id',(req,res) => {
     users.updateUser(req.params.id,req.body).lean().exec((err,user)=>{
             res.send(JSON.stringify(user));
         });

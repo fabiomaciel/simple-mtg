@@ -6,7 +6,7 @@ const mongoose = require('mongoose'),
 
 const UserSchema = mongoose.Schema({
 	username: {type: String, unique: true, dropDups: true, required: true},
-	password: {type: String, unique: true, dropDups: true, required: true},
+	password: {type: String, dropDups: true, required: true},
 	deckList: {type: Array, required: false},
 	lastLogin: {type: Date, default: Date.now} ,
     entryDate: Date,

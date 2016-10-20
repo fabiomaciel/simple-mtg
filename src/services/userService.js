@@ -5,7 +5,7 @@ class UserService{
 
     createUser(fields){
         let user = new User(fields)
-        return user.save().then(()=>{}, ()=>{})
+        return user.save()
     }
 
     findAllUsers(){
