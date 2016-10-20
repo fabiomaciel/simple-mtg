@@ -9,7 +9,7 @@ const service = require('./services/cardService'),
     SETS = require('./assets/SetCodes.json')
 
 function isEnd(){
-    return fs.readdirSync(SETS_DIR).length == SETS.length
+    return fs.readdirSync(SETS_DIR).length == (SETS.length +1);
 }
 
 function getCollection(index){
