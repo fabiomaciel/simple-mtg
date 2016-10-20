@@ -2,6 +2,10 @@
   "name": "simple-mtg",
   "version": "0.0.1",
   "description": "Simple mtg application",
+  "apidoc": {
+      "title": "Simple MTG API Documentation",
+      "url": "http://localhost:8000"
+  },
   "main": "index.js",
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha",
