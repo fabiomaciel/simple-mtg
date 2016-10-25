@@ -1,6 +1,7 @@
 'use strict'
 const Card   = require('../models/card'),
-      logger = require('../util/logger');
+      logger = require('../util/logger'),
+      Promise  = require('bluebird')
 
 class CardService{
 
@@ -21,6 +22,16 @@ class CardService{
             card.collectionCode.push(collectionCode)
             return card.save()
         })
+    }
+
+    findCardImage(id,lang){
+        return new Promise ((resolve,reject)=>{
+            this.findById(id).then(card => {
+                card.findImageUrlById(id,lang).then(url=>{
+                    resolve(url)
+                });
+            });
+        });
     }
 
     findOneByName(name){

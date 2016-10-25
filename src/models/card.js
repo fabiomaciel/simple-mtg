@@ -1,11 +1,11 @@
 'use strict'
 
 const mongoose = require('mongoose'),
-			db = require('./db')
-
+	  db       = require('./db'),
+      Promise  = require('bluebird')
 
 const CardSchema = mongoose.Schema({
-  id: String,
+    id: String,
 	name: {type: String, unique: true, dropDups: true, required: true},
 	names: {type: Array, required: false},
 	collectionCode: [String],
@@ -30,8 +30,12 @@ const CardSchema = mongoose.Schema({
 	artist: String,
 })
 
-CardSchema.methods.imageUrl = function(lang) {
-	return `http://magiccards.info/scans/${lang || 'en'}/${this.collectionCode}/${this.number}.jpg`
+CardSchema.methods.findImageUrlById = function(id,lang) {
+    return new Promise ((resolve,reject)=>{
+        this.model('card').findOne({id: id},(err,card) => {
+	        resolve(`http://magiccards.info/scans/${lang || 'en'}/${card.collectionCode.slice(-1).pop().toLowerCase()}/${card.number}.jpg`)
+        })
+    })
 }
 
 const Card = mongoose.model('card', CardSchema)

@@ -74,6 +74,13 @@ const express = require('express'),
  *  }
  *
  */
+router.get('/:id/image/:lang', (req,res) => {
+    cards.findCardImage(req.params.id,req.params.lang)
+        .then(imageUrl)=>{
+            res.send(imageUrl);
+        });
+});
+
 
 router.get('/:id', (req,res) => {
     cards.findById(req.params.id).lean().exec((err,card)=>{
