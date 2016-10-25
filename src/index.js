@@ -13,6 +13,10 @@ app.get('/health',function(req,res){
     res.send('It\'s ALIIIIIIVE');
 });
 
+app.use(express.static('public'));
+
+app.set('view engine','ejs');
+
 app.use('/',home);
 
 app.use('/cards', cards);
