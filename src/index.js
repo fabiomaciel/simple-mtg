@@ -5,9 +5,7 @@ const express = require('express'),
       cards   = require('./routes/cards'),
       decks   = require('./routes/decks'),
       matches = require('./routes/matches'),
-      users   = require('./routes/users'),
-      logger  = require('./util/logger.js'),
-      config  = require('../config/config');
+      users   = require('./routes/users');
 
 app.get('/health',function(req,res){
     res.send('It\'s ALIIIIIIVE');
@@ -27,6 +25,4 @@ app.use('/decks', decks);
 
 app.use('/matches', matches);
 
-app.listen(config.port);
-logger.info(`Server initialized on port: ${config.port}`);
-
+module.exports = app;

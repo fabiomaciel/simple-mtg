@@ -9,7 +9,7 @@
   "main": "index.js",
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha",
-    "start": "node ./src/index.js",
+    "start": "node ./app.js",
     "load": "node ./src/loadSets.js",
     "import": "node ./src/importSets.js"
   },
