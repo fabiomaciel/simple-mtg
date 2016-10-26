@@ -8,10 +8,8 @@ const CardSchema = mongoose.Schema({
     id: String,
 	name: {type: String, unique: true, dropDups: true, required: true},
 	names: {type: Array, required: false},
-	collectionCode: [String],
+	collections: [{number: {type: String, require: false}, code: {type: String}}],
     rarity: String,
-	number: {type: Number, require: false},
-	mciNumber: Number,
 	power: {type: String, required: false},
 	toughness: {type: String, require: false},
 	cmc: Number,
@@ -30,13 +28,10 @@ const CardSchema = mongoose.Schema({
 	artist: String,
 })
 
-CardSchema.methods.findImageUrlById = function(id,lang) {
-    return new Promise ((resolve,reject)=>{
-        this.model('card').findOne({id: id},(err,card) => {
-	        resolve(`http://magiccards.info/scans/${lang || 'en'}/${card.collectionCode.slice(-1).pop().toLowerCase()}/${card.number}.jpg`)
-        })
-    })
-}
+CardSchema.methods.imageUrl = function(lang){
+	return this.collections
+		.map(c => `http://magiccards.info/scans/${lang || 'en'}/${c.code.toLowerCase()}/${c.number}.jpg`)
+} 
 
 const Card = mongoose.model('card', CardSchema)
 

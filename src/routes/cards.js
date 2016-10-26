@@ -76,9 +76,9 @@ const express = require('express'),
  */
 
 router.get('/:id/image/:lang', (req,res) => {
-    cards.findCardImage(req.params.id,req.params.lang)
-        .then(imageUrl=>{
-            res.send(imageUrl);
+    cards.findById(req.params.id)
+        .then(card=>{
+            res.send(card.imageUrl(req.params.lang));
         });
 });
 

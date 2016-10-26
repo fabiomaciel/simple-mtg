@@ -10,16 +10,17 @@ class CardService{
         return card.save().then(()=>{}, ()=>{})
     }
 
-    addCollection(name, collectionCode){
+    addCollection(name, code, num){
         return this.findOneByName(name.toLowerCase()).then(card => {
             if(!card) {
                 return false
             }
-            if(card.collectionCode.indexOf(collectionCode) != -1) {
-                logger.warn(`Card '${name}'' already have collectionCode '${collectionCode}''`)
+            let codes = card.collections.filter(c => c.code == code)
+            if(codes.length > 0) {
+                logger.warn(`Card '${name}'' already have collection code '${code}''`)
                 return true
             }
-            card.collectionCode.push(collectionCode)
+            card.collections.push({code: code, number: num})
             return card.save()
         })
     }
@@ -52,8 +53,13 @@ class CardService{
 
     loadCollection(collection){
         return collection.cards.map( card =>{
+            card.collections = []
             card.number = card.number || card.mciNumber
-            card.collectionCode = [collection.code] 
+            delete card.mciNumber 
+            card.collections.push({
+                number: card.number,
+                code: collection.code
+            }) 
             return card
         })
     }
@@ -65,7 +71,10 @@ class CardService{
                 logger.info(`End import data from collection ${collectionCode}`)
                 return Promise.resolve(true)
             }
-            return this.addCollection(card.name, card.collectionCode[0])
+            if(card.number && card.number.match(/^\de\/en\/\d+/)) {
+                card.number = card.number.split('/')[2]
+            } 
+            return this.addCollection(card.name, collectionCode, card.number)
                 .then(result => {
                     if(result == false) return this.createCard(card)
                 }).then( _ => each(cards[++index]))
