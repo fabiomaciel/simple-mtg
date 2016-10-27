@@ -8,6 +8,14 @@
   </head>
 
   <body>
+  <% if(locals.success) { %>
+ <div class="alerts">
+     <div class="message">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+        <strong>Success!</strong><%= locals.success %>
+    </div>
+</div>
+<% } %>
 	<form>
 
 			<h1>Simple Magic</h1><br>
