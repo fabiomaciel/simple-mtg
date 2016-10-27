@@ -1,11 +1,24 @@
 'use strict'
 const User = require('../models/user')
+const bcrypt = require('bcrypt')
 
 class UserService{
 
-    createUser(fields){
+     createUser(fields,res,req,error_str){
         let user = new User(fields)
-        return user.save()
+        user.hash = bcrypt.hashSync(fields.password, 10);
+        return user.save(function(err){
+        if ( err && err.code === 11000 ) { 
+            error_str.push('User with username/email already Exists');
+            res.render('pages/signup',{error:error_str});
+            return;
+        }
+        else{
+            res.locals  = {};
+            res.locals["success"]='Registration Success';
+            res.redirect('/');
+        }
+        });
     }
 
     findAllUsers(){

@@ -1,8 +1,10 @@
 'use strict';
 const express = require('express'),
       app     = express(),
-      register = require('./routes/signup'),
+      bodyParser = require('body-parser'),
+      validator = require('express-validator'),
       home    = require('./routes/home'),
+      register = require('./routes/signup'),
       cards   = require('./routes/cards'),
       decks   = require('./routes/decks'),
       matches = require('./routes/matches'),
@@ -11,6 +13,9 @@ const express = require('express'),
 app.get('/health',function(req,res){
     res.send('It\'s ALIIIIIIVE');
 });
+
+app.use(bodyParser());
+app.use(validator());
 
 app.use(express.static('public'));
 
