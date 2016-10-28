@@ -22,7 +22,7 @@ router.post('/',(req,res) =>{
     if (data.email != data.confirm_email){
         error_str.push('Email and Confirm email doesnt match');
     }
-    if (errors) {
+    if (errors || error_str.length) {
         for (let i = 0; i < errors.length; i++){
             error_str.push(errors[i].msg);
         }
