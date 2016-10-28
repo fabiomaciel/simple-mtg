@@ -95,3 +95,6 @@ input:focus {
   margin: 0 0 10 0;
 }
 
+.magic-card {
+  background-image: url('/images/magic-card-back.png');
+}
