@@ -7,7 +7,7 @@ class UserService{
      createUser(fields,res,req,error_str){
         let user = new User(fields)
         user.hash = bcrypt.hashSync(fields.password, 10);
-        return user.save(function(err){
+        return user.save((err) => {
         if ( err && err.code === 11000 ) { 
             error_str.push('User with username/email already Exists');
             res.render('pages/signup',{error:error_str});
