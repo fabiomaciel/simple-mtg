@@ -44,20 +44,28 @@ app.use(express.static('public'));
 
 app.set('view engine','ejs');
 
-app.use('/home',home);
+app.use('/home', loggedIn,  home);
 
-app.use('/',login);
+app.use('/', login);
 
-app.use('/logout',logout);
+app.use('/logout', loggedIn, logout);
 
 app.use('/register',register);
 
-app.use('/cards', cards);
+app.use('/cards', loggedIn, cards);
 
-app.use('/users', users);
+app.use('/users', loggedIn, users);
 
-app.use('/decks', decks);
+app.use('/decks', loggedIn, decks);
 
-app.use('/matches', matches);
+app.use('/matches', loggedIn, matches);
+
+function loggedIn(req, res, next) {
+    if(req.user) {
+        next();
+    }else{
+        res.redirect('/');
+    }
+}
 
 module.exports = app;
