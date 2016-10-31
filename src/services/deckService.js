@@ -7,7 +7,7 @@ class DeckService{
 
     createDeck(fields){
         let deck = new Deck(fields)
-        return deck.save().then(()=>{}, ()=>{})
+        return deck.save()
     }
 
     findDeckImage(id,lang){
@@ -20,12 +20,16 @@ class DeckService{
         });
     }
 
+    findAllDecks(){
+        return Deck.find()
+    }
+
     findManyByName(name){
         return Deck.find({name: name})
     }
 
     findById(id){
-        return Deck.findOne({id: id})
+        return Deck.findOne({_id: id})
     }
 
     findByUserId(id){
