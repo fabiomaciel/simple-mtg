@@ -23,7 +23,7 @@ class UserService{
                         }
                         res.locals  = {};
                         res.locals["success"]='Registration Success';
-                        res.redirect('/');
+                        res.redirect('../home');
 
                     });
                 });
