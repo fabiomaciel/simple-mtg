@@ -28,7 +28,7 @@ app.use(cookieParser());
 app.use(require('express-session')({
     secret: 'BODY BUILDER PORRA',
     resave: false,
-    saveUnitialized: false
+    saveUninitialized: false
 }));
 app.use(passport.initialize());
 app.use(flash());
