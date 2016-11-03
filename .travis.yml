@@ -1,3 +1,16 @@
 language: node_js
 node_js: [node]
+sudo: false
+
+# see https://github.com/kelektiv/node.bcrypt.js/blob/master/.travis.yml
+env:
+    - CXX=g++-4.8
+before_install:
+    - $CXX --version
+addons:
+    apt:
+        sources:
+            - ubuntu-toolchain-r-test
+        packages:
+            - g++-4.8
 
