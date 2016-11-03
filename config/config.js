@@ -5,7 +5,7 @@ module.exports = {
 		"port": process.env.OPENSHIFT_MONGODB_DB_PORT || 27017,
 		"url": process.env.OPENSHIFT_MONGODB_DB_URL
 	},
-    "port": process.env.PORT || 8000,
+    "port": process.env.NODE_PORT || 8000,
     "log":{
         "error":{
             "filename": process.env.ERROR_FILE_NAME || "simple-mtg.error.log"
