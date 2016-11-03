@@ -1,6 +1,6 @@
 'use strict'
 const User = require('../models/user'),
-      bcrypt = require('bcrypt'),
+      bcrypt = require('bcryptjs'),
       passport = require('passport');
 
 class UserService{

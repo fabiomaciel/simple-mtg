@@ -32,7 +32,7 @@
   },
   "homepage": "https://github.com/fabiomaciel/simple-mtg#readme",
   "dependencies": {
-    "bcrypt": "^0.8.7",
+    "bcryptjs": "^2.3.0",
     "bluebird": "^3.4.6",
     "body-parser": "^1.15.2",
     "connect-flash": "^0.1.1",
