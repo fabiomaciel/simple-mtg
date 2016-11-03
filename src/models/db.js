@@ -5,7 +5,7 @@ const db = require('mongoose'),
       
 db.Promise = require('bluebird');
 
-db.connect(`mongodb://${config.mongo.host}/${config.mongo.database}`)
+db.connect(`mongodb://${config.mongo.host}/${config.mongo.database}:${config.mongo.port}`)
 
 module.export = db.connection
 
