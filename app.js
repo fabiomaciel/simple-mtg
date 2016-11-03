@@ -5,5 +5,5 @@ const config  = require('./config/config'),
 
 
 
-app.listen(config.port);
+app.listen(config.port, process.env.OPENSHIFT_NODEJS_IP || "localhost");
 logger.info(`Server initialized on port: ${config.port}`);
