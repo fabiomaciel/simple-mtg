@@ -16,8 +16,8 @@ const express      = require('express'),
       matches      = require('./routes/matches'),
       users        = require('./routes/users');
 
-app.get('/health',function(req,res){
-    res.send('It\'s ALIIIIIIVE');
+app.get('/api/health',function(req,res){
+    res.send({status: "IT'S ALIIIIIIVE"});
 });
 
 app.use(bodyParser.urlencoded({extended: true}));
