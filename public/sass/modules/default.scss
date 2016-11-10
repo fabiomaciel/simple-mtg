@@ -1,0 +1,89 @@
+html {
+	height: 100%;
+}
+body {
+	background-color: $secundary-bg-color;
+	height: 100%;
+}
+
+
+//****	GERAL	*******************************************//
+#Main {
+	height: calc( 100% - 53px );
+}
+
+.shadow {
+	box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.25);
+	-moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.25);
+	-webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.25);
+} 
+
+.shadow-bottom {
+	box-shadow: 0px 2px 10px 0px rgba(0,0,0,0.25);
+	-moz-box-shadow: 0px 2px 10px 0px rgba(0,0,0,0.25);
+	-webkit-box-shadow: 0px 2px 10px 0px rgba(0,0,0,0.25);
+} 
+
+.f-h {
+	height: 100%;
+}
+.bb {
+	box-sizing: border-box;
+}
+
+.radius {
+	border-radius: 100%;
+}
+
+.r-tl {
+	border-top-left-radius: 100%;
+}
+.r-tr {
+	border-top-right-radius: 100%;
+}
+.r-bl {
+	border-bottom-left-radius: 100%;
+}
+.r-br {
+	border-bottom-right-radius: 100%;
+}
+
+//chave, valor array
+@for $n from 0 through 2 {
+	@each $direction, $dir in $directions {
+		.p-#{$n} {
+			padding:($n*$default-margin-space)!important;
+		}
+		.m-#{$n} {
+			margin:($n*$default-margin-space)!important;
+		}
+		.b-#{$n} {
+			border: #{$n}px solid $primary-border-color!important;
+		}
+		.p-#{$direction}-#{$n} {
+			padding-#{$dir}:($n*$default-margin-space)!important;
+		}
+		.m-#{$direction}-#{$n} {
+			margin-#{$dir}:($n*$default-margin-space)!important;
+		}
+		.b-#{$direction}-#{$n} {
+			border-#{$dir}: #{$n}px solid $primary-border-color!important;
+		}
+	}
+	.p-tb-#{$n} {
+		padding-top:($n*$default-margin-space)!important;
+		padding-bottom:($n*$default-margin-space)!important;
+	}	
+	.m-tb-#{$n} {
+		margin-top:($n*$default-margin-space)!important;
+		margin-bottom:($n*$default-margin-space)!important;
+	}
+	.p-lr-#{$n} {
+		padding-left:($n*$default-margin-space)!important;
+		padding-right:($n*$default-margin-space)!important;
+	}	
+	.m-lr-#{$n} {
+		margin-left:($n*$default-margin-space)!important;
+		margin-right:($n*$default-margin-space)!important;
+	}
+}
