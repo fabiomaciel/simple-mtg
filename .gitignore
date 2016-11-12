@@ -3,3 +3,4 @@ node_modules
 .vscode
 ./src/assets/sets/*.json
 npm-debug.log
+.sass-cache/
