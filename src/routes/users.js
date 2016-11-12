@@ -64,7 +64,7 @@ router.get('/', (req,res) => {
 
 router.post('/',(req,res) => {
     users.createUser(req.body).then((userSaved)=>{
-         res.send(userSaved._id);
+        res.status(201).send(userSaved._id);
     }).catch((err)=>{
         res.status(400).send(err);
     });
