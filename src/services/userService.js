@@ -10,7 +10,6 @@ class UserService{
         let user = new User(fields)
         user.hash =  bcrypt.hashSync(fields.password, 10);
         return User.register(user,fields.password,(err,account) => {
-            console.log('oi')
             if ( err && err.code === 11000  || err && err.name == 'UserExistsError') { 
                 error_str.push({code: 3, message:'User with username/email already Exists'});
                 res.status(409).send({erros: error_str});
