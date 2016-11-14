@@ -50,15 +50,15 @@ app.use('/', login);
 
 app.use('/logout', loggedIn, logout);
 
-app.use('/register',register);
+app.use('/api/register',register);
 
-app.use('/cards', loggedIn, cards);
+app.use('/api/cards', loggedIn, cards);
 
-app.use('/users', loggedIn, users);
+app.use('/api/users', loggedIn, users);
 
-app.use('/decks', loggedIn, decks);
+app.use('/api/decks', loggedIn, decks);
 
-app.use('/matches', loggedIn, matches);
+app.use('/api/matches', loggedIn, matches);
 
 function loggedIn(req, res, next) {
     if(req.user) {
