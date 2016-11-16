@@ -2,7 +2,8 @@
 
 const mongoose = require('mongoose'),
 	  db       = require('./db'),
-      passportLocalMongoose = require('passport-local-mongoose');
+      passportLocalMongoose = require('passport-local-mongoose'),
+      uniqueValidator = require('mongoose-unique-validator');
 
 const UserSchema = mongoose.Schema({
 	username: {type: String, unique: true, dropDups: true, required: true},
@@ -14,6 +15,7 @@ const UserSchema = mongoose.Schema({
     hash:String,
 })
 
+UserSchema.plugin(uniqueValidator);
 UserSchema.plugin(passportLocalMongoose);
 
 const User = mongoose.model('user', UserSchema)
