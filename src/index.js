@@ -44,11 +44,9 @@ app.use(express.static('public'));
 
 app.set('view engine','ejs');
 
-app.use('/home', loggedIn,  home);
+app.use('/', home);
 
-app.use('/', login);
-
-app.use('/logout', loggedIn, logout);
+app.use('/api/logout', loggedIn, logout);
 
 app.use('/api/register',register);
 
@@ -59,6 +57,8 @@ app.use('/api/users', loggedIn, users);
 app.use('/api/decks', loggedIn, decks);
 
 app.use('/api/matches', loggedIn, matches);
+
+app.use('/api/me', (req,res) => { if(req.user){ res.send(req.user)}else{ res.status(401).send()}} );
 
 function loggedIn(req, res, next) {
     if(req.user) {

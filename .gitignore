@@ -4,3 +4,4 @@ node_modules
 ./src/assets/sets/*.json
 npm-debug.log
 .sass-cache/
+config.js
