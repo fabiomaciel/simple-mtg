@@ -40,10 +40,7 @@ passport.use(new LocalStrategy(Account.authenticate()));
 passport.serializeUser(Account.serializeUser());
 passport.deserializeUser(Account.deserializeUser());
 
-
 app.use(express.static('public'));
-
-app.set('view engine','ejs');
 
 app.use('/api/login/', login);
 
@@ -60,6 +57,10 @@ app.use('/api/decks', loggedIn, decks);
 app.use('/api/matches', loggedIn, matches);
 
 app.use('/api/me', me);
+
+app.use('/', (req,res) => {
+    res.sendfile('public/index.html');
+});
 
 function loggedIn(req, res, next) {
     if(req.user) {
