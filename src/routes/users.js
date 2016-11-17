@@ -25,6 +25,14 @@ router.get('/:id', (req,res) => {
         });
 });
 
+router.get('/:id/image', (req,res) => {
+    users.findById(req.params.id)
+        .then(user => {
+            res.send(user.imageUrl());
+        });
+});
+
+
 
 /**
  * @api {get} /user?username=:username Request User information by username

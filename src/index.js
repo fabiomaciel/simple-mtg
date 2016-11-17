@@ -14,6 +14,7 @@ const express      = require('express'),
       cards        = require('./routes/cards'),
       decks        = require('./routes/decks'),
       matches      = require('./routes/matches'),
+      me           = require('./routes/me'),
       users        = require('./routes/users');
 
 app.get('/api/health',function(req,res){
@@ -58,7 +59,7 @@ app.use('/api/decks', loggedIn, decks);
 
 app.use('/api/matches', loggedIn, matches);
 
-app.use('/api/me', (req,res) => { if(req.user){ res.send(req.user)}else{ res.status(401).send()}} );
+app.use('/api/me', me);
 
 function loggedIn(req, res, next) {
     if(req.user) {
