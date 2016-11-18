@@ -1,0 +1,3 @@
+[submodule "mtg-place-front"]
+	path = mtg-place-front
+	url = git@github.com:andarilhoz/mtg-place-front.git
