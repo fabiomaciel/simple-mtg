@@ -5,7 +5,7 @@ const express = require('express'),
 
 router.get('/',(req,res) => {
     req.logout();
-    res.redirect('/');
+    res.status(200).send();
 });
 
 

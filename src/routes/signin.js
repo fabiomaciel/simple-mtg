@@ -10,7 +10,7 @@ router.get('/',(req,res) => {
 });
 
 router.post('/', passport.authenticate('local'), (req,res,next) => {
-    res.redirect('/home');
+    res.status(200).send(req.user._id);
 });
 
 module.exports = router;

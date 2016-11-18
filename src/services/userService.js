@@ -9,12 +9,14 @@ class UserService{
         let user = new User(fields)
         user.hash =  bcrypt.hashSync(fields.password, 10);
         return User.register(user,fields.password,(err,account) => {
-            if ( err && err.code === 11000 ) { 
-                error_str.push('User with username/email already Exists');
-                res.render('pages/signup',{error:error_str});
+            if ( err && err.code === 11000  || err && err.name == 'UserExistsError' || err && err.name == "ValidationError") { 
+                error_str.push({code: 3, message:'User with username/email already Exists'});
+                res.status(409).send({errors: error_str});
                 return;
-            }
-            else{
+            }else if(err){
+                res.status(500).send(err);
+                return;
+            }else{
                 passport.authenticate('local')(req,res, () => {
                     req.session.save((err) => {
                         if(err) {
@@ -23,8 +25,7 @@ class UserService{
                         }
                         res.locals  = {};
                         res.locals["success"]='Registration Success';
-                        res.redirect('../home');
-
+                        res.status(201).send(account._id);
                     });
                 });
             }

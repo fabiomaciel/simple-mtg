@@ -14,10 +14,11 @@ const express      = require('express'),
       cards        = require('./routes/cards'),
       decks        = require('./routes/decks'),
       matches      = require('./routes/matches'),
+      me           = require('./routes/me'),
       users        = require('./routes/users');
 
-app.get('/health',function(req,res){
-    res.send('It\'s ALIIIIIIVE');
+app.get('/api/health',function(req,res){
+    res.send({status: "IT'S ALIIIIIIVE"});
 });
 
 app.use(bodyParser.urlencoded({extended: true}));
@@ -44,21 +45,21 @@ app.use(express.static('public'));
 
 app.set('view engine','ejs');
 
-app.use('/home', loggedIn,  home);
+app.use('/api/login/', login);
 
-app.use('/', login);
+app.use('/api/logout', loggedIn, logout);
 
-app.use('/logout', loggedIn, logout);
+app.use('/api/register',register);
 
-app.use('/register',register);
+app.use('/api/cards', loggedIn, cards);
 
-app.use('/cards', loggedIn, cards);
+app.use('/api/users', loggedIn, users);
 
-app.use('/users', loggedIn, users);
+app.use('/api/decks', loggedIn, decks);
 
-app.use('/decks', loggedIn, decks);
+app.use('/api/matches', loggedIn, matches);
 
-app.use('/matches', loggedIn, matches);
+app.use('/api/me', me);
 
 function loggedIn(req, res, next) {
     if(req.user) {
